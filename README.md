@@ -19,3 +19,10 @@
 4. Create the root directory ./checkpoint and put the pretrained_weight in.
 
 ### Training model
+```python
+sh run.sh
+```
+**Note:** We provide commands for running three datasets in run.sh. You can switch commands by opening comments. 
+
+### Training logs
+**Note:** We provide logs of our training in the logs directory.
