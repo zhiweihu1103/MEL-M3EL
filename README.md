@@ -1,1 +1,21 @@
-# MEL-M3EL
+# Multi-level Matching Network for Multimodal Entity Linking
+#### This repo provides the source code & data of our paper: Multi-level Matching Network for Multimodal Entity Linking.
+
+## Dependencies
+* conda create -n m3el python=3.7 -y
+* torch==1.11.0+cu113
+* transformers==4.27.1
+* torchmetrics==0.11.0
+* tokenizers==0.12.1
+* pytorch-lightning==1.7.7
+* omegaconf==2.2.3
+* pillow==9.3.0
+
+## Running the code
+### Dataset
+1. Download the datasets from [MIMIC paper](https://github.com/pengfei-luo/MIMIC).
+2. Create the root directory ./data and put the dataset in.
+3. Download the pretrained_weight from [clip-vit-base-patch32](https://huggingface.co/openai/clip-vit-base-patch32).
+4. Create the root directory ./checkpoint and put the pretrained_weight in.
+
+### Training model
