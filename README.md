@@ -17,6 +17,5 @@
 2. Create the root directory ./data and put the dataset in.
 3. Download the pretrained_weight from [clip-vit-base-patch32](https://huggingface.co/openai/clip-vit-base-patch32).
 4. Create the root directory ./checkpoint and put the pretrained_weight in.
-5. 
 
 ### Training model
