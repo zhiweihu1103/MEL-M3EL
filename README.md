@@ -26,3 +26,16 @@ sh run.sh
 
 ### Training logs
 **Note:** We provide logs of our training in the logs directory.
+
+## Citation
+If you find this code useful, please consider citing the following paper.
+```
+@article{
+  author={Zhiwei Hu and Víctor Gutiérrez-Basulto and Ru Li and Jeff Z. Pan},
+  title={Multi-level Matching Network for Multimodal Entity Linking},
+  publisher="KDD",
+  year={2025}
+}
+```
+## Acknowledgement
+We refer to the code of [CET](https://github.com/CCIIPLab/CET). Thanks for their contributions.
