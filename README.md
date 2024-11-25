@@ -1,5 +1,5 @@
 # Multi-level Matching Network for Multimodal Entity Linking
-#### This repo provides the source code & data of our paper: Multi-level Matching Network for Multimodal Entity Linking.
+#### This repo provides the source code & data of our paper: Multi-level Matching Network for Multimodal Entity Linking(KDD2025).
 
 ## Dependencies
 * conda create -n m3el python=3.7 -y
