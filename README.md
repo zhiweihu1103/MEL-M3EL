@@ -10,6 +10,7 @@
 * pytorch-lightning==1.7.7
 * omegaconf==2.2.3
 * pillow==9.3.0
+**Note:** We found that the version of transformers affects performance.
 
 ## Running the code
 ### Dataset
@@ -33,9 +34,9 @@ If you find this code useful, please consider citing the following paper.
 @article{
   author={Zhiwei Hu and Víctor Gutiérrez-Basulto and Ru Li and Jeff Z. Pan},
   title={Multi-level Matching Network for Multimodal Entity Linking},
-  publisher="KDD",
+  publisher="ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
   year={2025}
 }
 ```
 ## Acknowledgement
-We refer to the code of [CET](https://github.com/CCIIPLab/CET). Thanks for their contributions.
+We refer to the code of [MIMIC](https://github.com/pengfei-luo/MIMIC. Thanks for their contributions.
