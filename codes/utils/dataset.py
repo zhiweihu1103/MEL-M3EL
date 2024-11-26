@@ -61,7 +61,7 @@ class DataModuleForMIMIC(pl.LightningDataModule):
         for sample_dict in tqdm(data, desc='PreProcessing'):
             sample_type = sample_dict['type']
             if sample_type == 'entity':
-                entity, desc = unquote(sample_dict.pop('entity_name')), sample_dict.pop('attr')
+                entity, desc = unquote(sample_dict.pop('entity_name')), sample_dict.pop('desc')
                 input_text = entity + ' [SEP] ' + desc # concat entity and sentence
                 input_dict = self.tokenizer(input_text, padding='max_length', max_length=self.args.data.text_max_length, truncation=True)
             input_dict['img_list'] = sample_dict['image_list']
