@@ -40,4 +40,4 @@ If you find this code useful, please consider citing the following paper.
 }
 ```
 ## Acknowledgement
-We refer to the code of [MIMIC](https://github.com/pengfei-luo/MIMIC. Thanks for their contributions.
+We refer to the code of [MIMIC](https://github.com/pengfei-luo/MIMIC). Thanks for their contributions.
