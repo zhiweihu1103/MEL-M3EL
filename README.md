@@ -17,8 +17,9 @@
 ### Dataset
 1. Download the datasets from [MIMIC paper](https://github.com/pengfei-luo/MIMIC).
 2. Create the root directory ./data and put the dataset in.
-3. Download the pretrained_weight from [clip-vit-base-patch32](https://huggingface.co/openai/clip-vit-base-patch32).
-4. Create the root directory ./checkpoint and put the pretrained_weight in.
+3. Download the [M3EL](https://drive.google.com/drive/folders/1mZoE28f6FSxRyogjZuKSjA7-7YaC1nKe?usp=sharing) datasets, and replace the dataset with the same name in MIMIC.
+4. Download the pretrained_weight from [clip-vit-base-patch32](https://huggingface.co/openai/clip-vit-base-patch32).
+5. Create the root directory ./checkpoint and put the pretrained_weight in.
 
 ### Training model
 ```python
