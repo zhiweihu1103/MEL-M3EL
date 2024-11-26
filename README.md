@@ -10,6 +10,7 @@
 * pytorch-lightning==1.7.7
 * omegaconf==2.2.3
 * pillow==9.3.0
+
 **Note:** We found that the version of transformers affects performance.
 
 ## Running the code
