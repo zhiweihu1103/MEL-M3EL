@@ -52,10 +52,10 @@ class DataModuleForM3EL(pl.LightningDataModule):
     def setup_dataset_for_entity(self, path, data):
         # prepare entity information
         pkl_path = path[0:path.rfind('.')] + '.pkl'
-        if os.path.exists(pkl_path):
-            with open(pkl_path, 'rb') as file:
-                input_data = pickle.load(file)
-            return input_data
+        # if os.path.exists(pkl_path):
+        #     with open(pkl_path, 'rb') as file:
+        #         input_data = pickle.load(file)
+        #     return input_data
 
         input_data = []
         for sample_dict in tqdm(data, desc='PreProcessing'):
@@ -78,10 +78,10 @@ class DataModuleForM3EL(pl.LightningDataModule):
     def setup_dataset_for_mention(self, path, data):
         # prepare mention information
         pkl_path = path[0:path.rfind('.')] + '.pkl'
-        if os.path.exists(pkl_path):
-            with open(pkl_path, 'rb') as file:
-                input_data = pickle.load(file)
-            return input_data
+        # if os.path.exists(pkl_path):
+        #     with open(pkl_path, 'rb') as file:
+        #         input_data = pickle.load(file)
+        #     return input_data
 
         input_data = []
         for sample_dict in tqdm(data, desc='PreProcessing'):
