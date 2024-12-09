@@ -3,14 +3,14 @@ import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 from codes.utils.functions import setup_parser
 from codes.model.lightning_m3el import LightningForM3EL
-from codes.utils.dataset import DataModuleForMIMIC
+from codes.utils.dataset import DataModuleForM3EL
 
 if __name__ == '__main__':
     args = setup_parser()
     pl.seed_everything(args.seed, workers=True)
     torch.set_num_threads(1)
 
-    data_module = DataModuleForMIMIC(args)
+    data_module = DataModuleForM3EL(args)
     lightning_model = LightningForM3EL(args)
 
     logger = pl.loggers.CSVLogger("./runs", name=args.run_name, flush_logs_every_n_steps=30)
