@@ -147,7 +147,7 @@ class CrossModalMatch(nn.Module):
         self.multi_head_module= MultiHeadModule(self.args.model.head_num, self.args.model.weight)
         self.fusion_module = FusionModule(self.args.model.CMM_hidden_dim)
 
-        self.mclet_text_loss = MCLETLoss(embedding_dim=self.args.model.CMM_hidden_dim, cl_temperature=self.args.model.loss_temperature)
+        self.mclet_text_loss = MCLETLoss(embedding_dim=self.args.model.CMM_hidden_dim, cl_temperature=0.6)
 
     def forward(self, entity_text_cls, entity_image_tokens,
                 mention_text_cls, mention_image_tokens):
@@ -198,8 +198,8 @@ class CrossModalMatchBidirection(nn.Module):
         self.match_module = MatchModule(self.args.model.CMM_hidden_dim)
         self.multi_head_module = MultiHeadModule(self.args.model.head_num, self.args.model.weight)
 
-        self.mclet_text_loss = MCLETLoss(embedding_dim=self.args.model.TIMM_hidden_dim, cl_temperature=self.args.model.loss_temperature)
-        self.mclet_image_loss = MCLETLoss(embedding_dim=self.args.model.IIMM_hidden_dim, cl_temperature=self.args.model.loss_temperature)
+        self.mclet_text_loss = MCLETLoss(embedding_dim=self.args.model.CMM_hidden_dim, cl_temperature=0.6)
+        self.mclet_image_loss = MCLETLoss(embedding_dim=self.args.model.CMM_hidden_dim, cl_temperature=0.6)
 
     def forward(self,
                 entity_text_cls, entity_text_tokens,
@@ -270,9 +270,8 @@ class M3ELMatcher(nn.Module):
         self.scale_image_cls_layernorm = nn.LayerNorm(self.args.model.IIMM_hidden_dim)
         self.scale_image_tokens_layernorm = nn.LayerNorm(self.args.model.IIMM_hidden_dim)
 
-        self.infonce_loss = InfoNCELoss(T_init=self.args.model.loss_temperature)
-        self.mclet_text_loss = MCLETLoss(embedding_dim=self.args.model.dt, cl_temperature=self.args.model.loss_temperature)
-        self.mclet_image_loss = MCLETLoss(embedding_dim=self.args.model.IIMM_hidden_dim, cl_temperature=self.args.model.loss_temperature)
+        self.mclet_text_loss = MCLETLoss(embedding_dim=self.args.model.IIMM_hidden_dim, cl_temperature=0.6)
+        self.mclet_image_loss = MCLETLoss(embedding_dim=self.args.model.IIMM_hidden_dim, cl_temperature=0.6)
         self.weight_cl_loss = WeightedContrastiveLoss(temperature=self.args.model.loss_temperature, inter_weight=self.args.model.inter_weight, intra_weight=self.args.model.intra_weight)
 
     def forward(self,
@@ -293,22 +292,10 @@ class M3ELMatcher(nn.Module):
         :param mention_image_tokens:[num_entity, num_patch, dim]
         :return:
         """
-        if self.args.model.with_cl_loss == 1:
-            if train_flag == True:
-                if self.args.model.loss_type == 0:
-                    text_cl_loss = self.weight_cl_loss(entity_text_cls, mention_text_cls)
-                    image_cl_loss = self.weight_cl_loss(entity_image_cls, mention_image_cls)
-                    cl_loss = (text_cl_loss + image_cl_loss) / 2
-                elif self.args.model.loss_type == 1:
-                    text_cl_loss = self.infonce_loss(entity_text_cls, mention_text_cls)
-                    image_cl_loss = self.infonce_loss(entity_image_cls, mention_image_cls)
-                    cl_loss = (text_cl_loss + image_cl_loss) / 2
-                elif self.args.model.loss_type == 2:
-                    text_cl_loss = self.mclet_text_loss(entity_text_cls, mention_text_cls)
-                    image_cl_loss = self.mclet_image_loss(entity_image_cls, mention_image_cls)
-                    cl_loss = (text_cl_loss + image_cl_loss) / 2
-            else:
-                cl_loss = None
+        if train_flag == True:
+            text_cl_loss = self.weight_cl_loss(entity_text_cls, mention_text_cls)
+            image_cl_loss = self.weight_cl_loss(entity_image_cls, mention_image_cls)
+            cl_loss = (text_cl_loss + image_cl_loss) / 2
         else:
             cl_loss = None
 
