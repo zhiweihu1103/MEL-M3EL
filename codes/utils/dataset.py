@@ -30,9 +30,9 @@ def _load_json_file(filepath):
     return data
 
 
-class DataModuleForMIMIC(pl.LightningDataModule):
+class DataModuleForM3EL(pl.LightningDataModule):
     def __init__(self, args):
-        super(DataModuleForMIMIC, self).__init__()
+        super(DataModuleForM3EL, self).__init__()
         self.args = args
         current_directory = os.path.dirname(os.path.abspath(__file__))
         base_path = current_directory[0:current_directory.rfind('/')]
